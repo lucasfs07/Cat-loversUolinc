@@ -86,7 +86,7 @@ Consulta SQL para exportar 100 registros aleatórios contendo texto, data de cri
 EXPORT DATA OPTIONS(
   uri = 'gs://uolcatlovers-qa/amostra_qa_*.csv',
   format = 'CSV',
-  overwrite = true,
+  overwrite = false,
   header = true,
   field_delimiter = ','
 )
@@ -96,13 +96,12 @@ SELECT
   created_at,
   updated_at
 FROM `uolcatlovers.prod.cat_facts`
-TABLESAMPLE SYSTEM (100 ROWS);
+ORDER BY RAND()
+LIMIT 100;
 ```
 ---
 
-Observações
-
 - O repositório contém scripts Python e consultas SQL prontas para execução.
 - A arquitetura na GCP é conceitual, mostrando a evolução do projeto da coleta local até a solução em nuvem.
-- Todos os scripts podem ser versionados e compartilhados via GitHub para avaliação.
+- o arquivo sempre sera salvo no storage no URI especificado em cada query de criação de tabela caso rode amostra de QA duas ou mais vezes teremos 2 arquivos (exemplo: amostra_qa_000000000000.csv & amostra_qa_000000000001.csv) diferente da criação da tabela principal de prod que sempre sera sobre escrita
 
