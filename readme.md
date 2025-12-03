@@ -14,16 +14,16 @@ Como a startup foi recém-criada, ainda não há grande demanda pelos dados. Por
 Arquivo: collector.py
 
 Como usar:
-# padrão: 1 fato aleatório de gato
+- padrão: 1 fato aleatório de gato
 python collector.py
 
-# 20 fatos aleatórios de cachorro
+- 20 fatos aleatórios de cachorro
 python collector.py --species dog --number 20
 
-# todos os fatos disponíveis (sobrescreve o arquivo)
+- todos os fatos disponíveis (sobrescreve o arquivo)
 python collector.py --all
 
-# adiciona ao arquivo existente sem duplicar
+- adiciona ao arquivo existente sem duplicar
 python collector.py --all --append
 
 ---
@@ -103,5 +103,6 @@ LIMIT 100;
 
 - O repositório contém scripts Python e consultas SQL prontas para execução.
 - A arquitetura na GCP é conceitual, mostrando a evolução do projeto da coleta local até a solução em nuvem.
-- o arquivo sempre sera salvo no storage no URI especificado em cada query de criação de tabela caso rode amostra de QA duas ou mais vezes teremos 2 arquivos (exemplo: amostra_qa_000000000000.csv & amostra_qa_000000000001.csv) diferente da criação da tabela principal de prod que sempre sera sobre escrita
+- O arquivo sempre sera salvo no storage no URI especificado em cada query de criação de tabela caso rode amostra de QA duas ou mais vezes teremos 2 arquivos (exemplo: amostra_qa_000000000000.csv & amostra_qa_000000000001.csv) diferente da criação da tabela principal de prod que sempre sera sobre escrita
+
 
