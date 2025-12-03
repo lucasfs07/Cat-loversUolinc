@@ -46,7 +46,7 @@ Com o crescimento do aplicativo e aumento exponencial de fatos, a solução loca
 ## 3. Esquema da tabela no BigQuery
 
 Tabela de fatos sobre gatos (cat_facts) com informações detalhadas sobre cada fato:
-
+```
 CREATE TABLE `uolcatlovers.prod.cat_facts` (
   id          STRING      NOT NULL,
   version     INT64,
@@ -65,24 +65,24 @@ CREATE TABLE `uolcatlovers.prod.cat_facts` (
 )
 PARTITION BY DATE(updated_at)
 CLUSTER BY animal_type;
-
+```
 ---
 
 ## 4. Fatos atualizados em agosto de 2020
 
 Consulta SQL para extrair fatos atualizados no mês de agosto de 2020:
-
+```
 SELECT *
 FROM `uolcatlovers.prod.cat_facts`
 WHERE updated_at >= '2020-08-01'
   AND updated_at < '2020-09-01';
-
+```
 ---
 
 ## 5. Amostra aleatoria de 100 registros para o time QA
 
 Consulta SQL para exportar 100 registros aleatórios contendo texto, data de criação e data de atualização, separando os dados em CSV no GCS:
-
+```
 EXPORT DATA OPTIONS(
   uri = 'gs://uolcatlovers-qa/amostra_qa_*.csv',
   format = 'CSV',
@@ -97,7 +97,7 @@ SELECT
   updated_at
 FROM `uolcatlovers.prod.cat_facts`
 TABLESAMPLE SYSTEM (100 ROWS);
-
+```
 ---
 
 Observações
@@ -105,3 +105,4 @@ Observações
 - O repositório contém scripts Python e consultas SQL prontas para execução.
 - A arquitetura na GCP é conceitual, mostrando a evolução do projeto da coleta local até a solução em nuvem.
 - Todos os scripts podem ser versionados e compartilhados via GitHub para avaliação.
+
