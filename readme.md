@@ -1,4 +1,4 @@
-UOLCatLovers - Desafio Técnico
+## UOLCatLovers - Desafio Técnico
 
 Repositório com a resolução completa do desafio técnico UOLCatLovers.
 
